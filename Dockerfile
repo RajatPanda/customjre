@@ -9,7 +9,7 @@ RUN jlink --add-modules $(cat ./jdeps.info) --output ./jre
 FROM alpine
 RUN mkdir "/home/app"
 ENV JAVA_HOME=/opt/jre-17
-ENV PATH=$JAVA_HOME/bin;$PATH
+ENV PATH=$JAVA_HOME/bin:$PATH
 COPY --from=builder /home/target/customjre-0.0.1-SNAPSHOT.jar /home/app/customjre.jar
 COPY --from=builder /home/jre /opt/jre-17
 WORKDIR /home/app
